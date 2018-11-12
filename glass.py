@@ -100,6 +100,20 @@ api = Api(app)
 
 parser = reqparse.RequestParser()
 
+'''
+Test by post man
+    {
+        "RI":  1.51316,
+        "Na":  13.02,
+        "Mg":  0,
+        "Al":  3.04,
+        "Si":  70.48,
+        "K":  6.21,
+        "Ca":  6.96,
+        "Ba":  0,
+        "Fe":  0
+    }
+'''
 
 class HelloWorld(Resource):
     def get(self):

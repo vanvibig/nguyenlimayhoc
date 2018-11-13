@@ -16,7 +16,7 @@ y = glass.iloc[:, 9]
 from sklearn.naive_bayes import GaussianNB
 from sklearn.model_selection import train_test_split
 
-#X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=10)
+# X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=10)
 
 
 from sklearn.metrics import accuracy_score
@@ -59,15 +59,15 @@ for train_index, test_index in kf.split(X):
     print("Accuracy at", j, ":", accuracy)
     print("Do chinh xac trung binh at", j, ":", avg_accuracy/j)
 
-#    labels = np.unique(glass.Type)
-#    matrix = confusion_matrix(reality, predict, labels=labels)
-#
-#    leni = len(matrix)
-#    accuracy_avg = 0;
-#    for i in range(0,leni):
-#        accuracy = float(matrix[i][i])/(np.sum(matrix[i]))*100
-#        accuracy_avg += accuracy
-#        print('Do chinh xac lop '+ str(i) + ": " + str(accuracy) + "%")
+    labels = np.unique(glass.Type)
+    matrix = confusion_matrix(reality, predict, labels=labels)
+
+    leni = len(matrix)
+    accuracy_avg = 0
+    for i in range(0, leni):
+        accuracy = float(matrix[i][i])/(np.sum(matrix[i]))*100
+        accuracy_avg += accuracy
+        print('Do chinh xac lop ' + str(i) + ": " + str(accuracy) + "%")
 #
 #    print("X_test:", X_test)
     print("==================")
@@ -80,20 +80,3 @@ inputSample = np.array(
     [[1.51556, 13.87, 0, 2.54, 73.23, 0.14, 9.41, 0.81, 0.01]])
 resultSample = model.predict(inputSample)
 print("result sample:", resultSample)
-
-
-from flask import Flask, jsonify
-
-app = Flask(__name__)
-
-
-@app.route('/')
-def hello():
-    return jsonify({
-        "hello": 'world',
-        "do chinh xac": avg_accuracy/10
-    })
-
-
-if __name__ == '__main__':
-    app.run(debug=True)

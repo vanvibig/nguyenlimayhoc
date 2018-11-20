@@ -127,10 +127,13 @@ class HelloWorld(Resource):
     def post(sefl):
         content = request.json
         inputSample = np.array([list(content.values())])
-        result = testModel(inputSample)
+        result = int(testModel(inputSample)[0])
         print('requestBody:', inputSample)
-        print('result:', str(result))
-        return str(result)
+        print('result:', result)
+        print("type: ", result)
+        return {
+            'Type' : result
+        }
 
 
 api.add_resource(HelloWorld, '/')
